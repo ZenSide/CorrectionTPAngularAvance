@@ -1,0 +1,16 @@
+<h2>Ajouter un livre</h2>
+<form [formGroup]="bookGroup" (ngSubmit)="submit()">
+  <label>Titre <input formControlName="title"></label><br>
+  <app-form-error [control]="title" fieldName="titre"></app-form-error>
+
+  <label>Description <textarea formControlName="description"></textarea></label><br>
+  <fieldset formGroupName="author" title="Auteur">
+    <label>Prénom <input formControlName="firstname"> </label><br>
+    <app-form-error [control]="firstname" fieldName="prénom"></app-form-error>
+    <label>Nom <input formControlName="lastname"> </label>
+    <app-form-error [control]="lastname" fieldName="nom"></app-form-error>
+  </fieldset>
+  <hr>
+  <button>Ajouter</button>
+</form>
+

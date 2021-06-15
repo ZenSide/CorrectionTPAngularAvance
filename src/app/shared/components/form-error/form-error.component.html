@@ -1,0 +1,11 @@
+
+
+
+
+<p *ngIf="showError('required')">Veuillez remplir le champ {{fieldName}}</p>
+<p *ngIf="showError('minlength')">Le champs {{fieldName}} est trop court</p>
+<p *ngIf="showError('maxlength')">Le champs {{fieldName}} est trop long</p>
+<p *ngIf="showError('email')">Veuillez saisir un email valide</p>
+<p *ngIf="showError('noBadWords')">
+  Les mots suivants sont interdits : {{control.getError('noBadWords').badWords}}
+</p>

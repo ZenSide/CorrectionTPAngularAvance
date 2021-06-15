@@ -1,0 +1,19 @@
+
+<form [formGroup]="contactForm">
+  <label>
+    Email <input formControlName="email">
+  </label><br>
+  <app-form-error [control]="contactForm.get('email')" fieldName="email"></app-form-error>
+  <br>
+  <label>
+    Subject <input formControlName="subject">
+  </label><br>
+  <app-form-error [control]="contactForm.get('subject')" fieldName="sujet"></app-form-error>
+  <br>
+  <label>
+    Message <textarea formControlName="message"></textarea>
+  </label><br>
+  <app-form-error [control]="contactForm.get('message')" fieldName="message"></app-form-error>
+  <br>
+  <button>Envoyer</button>
+</form>
