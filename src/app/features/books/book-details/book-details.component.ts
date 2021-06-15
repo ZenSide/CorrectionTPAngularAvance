@@ -16,12 +16,11 @@ export class BookDetailsComponent implements OnInit {
   @ViewChild(BookComponent, {static: true})
   bookComponent: BookComponent;
 
-  constructor(private bookService: BooksService, private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute) {
   }
 
   async ngOnInit() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.book = await this.bookService.getOneById(+id).toPromise();
+    this.book = this.activatedRoute.snapshot.data['book'];
   }
 
 

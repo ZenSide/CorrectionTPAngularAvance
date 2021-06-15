@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiPrefix: 'https://my-library.free.beeceptor.com'
+  apiPrefix: 'https://my-library.free.beeceptor.com',
+  useCache: false
 };
 
 /*

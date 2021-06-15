@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router, RouterEvent} from "@angular/router";
 import {filter} from "rxjs/operators";
+import {RequestsCancelerInterceptor} from "./interceptors/requests-canceler.interceptor";
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,8 @@ export class AppComponent implements OnInit {
     // this init will be launched only once in app lifetime
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
-      .subscribe((e: RouterEvent) => console.log('Route end: ' + e.url));
+      .subscribe((e: RouterEvent) => {
+        console.log('route end');
+      });
   }
 }

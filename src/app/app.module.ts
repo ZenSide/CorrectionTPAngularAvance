@@ -13,6 +13,7 @@ import {HttpCacheInterceptor} from "./interceptors/http-cache.interceptor";
 import {ContactModule} from './features/contact/contact.module';
 import {LoginModule} from './features/login/login.module';
 import {AuthTokenInterceptor} from "./interceptors/auth-token.interceptor";
+import {RequestsCancelerInterceptor} from "./interceptors/requests-canceler.interceptor";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {AuthTokenInterceptor} from "./interceptors/auth-token.interceptor";
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorsInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: HttpCacheInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: RequestsCancelerInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })
