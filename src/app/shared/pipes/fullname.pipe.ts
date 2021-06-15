@@ -7,7 +7,7 @@ import {Author} from "../../entity/author.entity";
 export class FullnamePipe implements PipeTransform {
 
   transform(author: Author): string {
-    return author.firsname+' '+author.lastname;
+    return author.firstname+' '+author.lastname;
   }
 
 }

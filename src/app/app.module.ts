@@ -15,6 +15,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ApiPrefixInterceptor} from "./interceptors/api-prefix.interceptor";
 import {HttpErrorsInterceptor} from "./interceptors/http-errors.interceptor";
 import {HttpCacheInterceptor} from "./interceptors/http-cache.interceptor";
+import { ContactModule } from './features/contact/contact.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {HttpCacheInterceptor} from "./interceptors/http-cache.interceptor";
     SharedModule,
     GeneralModule,
     HomeModule,
-    HttpClientModule
+    HttpClientModule,
+    ContactModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true},

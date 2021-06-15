@@ -1,5 +1,5 @@
 export class Author {
   id: number;
-  firsname: string;
+  firstname: string;
   lastname: string;
 }

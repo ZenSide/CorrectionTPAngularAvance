@@ -5,12 +5,14 @@ import { BooksRoutingModule } from './books-routing.module';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import {SharedModule} from "../../shared/shared.module";
+import { BookAddComponent } from './book-add/book-add.component';
 
 
 @NgModule({
   declarations: [
     BookListComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    BookAddComponent
   ],
   imports: [
     BooksRoutingModule,

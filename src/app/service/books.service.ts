@@ -19,4 +19,8 @@ export class BooksService {
   getOneById(id: number): Observable<Book> {
     return this.http.get<Book>('/book/' + id);
   }
+
+  addBook(book: Book) {
+    return this.http.post('/book', book);
+  }
 }

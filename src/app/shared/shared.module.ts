@@ -6,6 +6,8 @@ import {FullnamePipe} from './pipes/fullname.pipe';
 import {BookComponent} from './components/book/book.component';
 import {Book} from "../entity/book.entity";
 import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
+import { FormErrorComponent } from './components/form-error/form-error.component';
 
 
 @NgModule({
@@ -13,11 +15,13 @@ import {HttpClientModule} from "@angular/common/http";
     CommonModule,
     NgbModule,
     RouterModule,
+    ReactiveFormsModule
   ],
-  exports: [RouterModule, CommonModule, NgbModule, FullnamePipe, BookComponent],
+  exports: [RouterModule, FormErrorComponent, ReactiveFormsModule, CommonModule, NgbModule, FullnamePipe, BookComponent],
   declarations: [
     FullnamePipe,
-    BookComponent
+    BookComponent,
+    FormErrorComponent
   ]
 })
 export class SharedModule {
