@@ -11,6 +11,10 @@ import {SharedModule} from "./shared/shared.module";
 import { HomeComponent } from './features/home/home/home.component';
 import { GeneralModule } from './features/general/general.module';
 import { HomeModule } from './features/home/home.module';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {ApiPrefixInterceptor} from "./interceptors/api-prefix.interceptor";
+import {HttpErrorsInterceptor} from "./interceptors/http-errors.interceptor";
+import {HttpCacheInterceptor} from "./interceptors/http-cache.interceptor";
 
 @NgModule({
   declarations: [
@@ -22,9 +26,14 @@ import { HomeModule } from './features/home/home.module';
     BooksModule,
     SharedModule,
     GeneralModule,
-    HomeModule
+    HomeModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: HttpErrorsInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: HttpCacheInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
