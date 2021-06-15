@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Book} from "../entity/book.entity";
+import {Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,11 @@ export class BooksService {
   constructor() {
   }
 
-  getAll(): Book[] {
-    return this.books;
+  getAll(): Observable<Book[]> {
+    return of(this.books);
   }
 
-  getOneById(id: number): Book {
-    return this.books.find(book => book.id == id)
+  getOneById(id: number): Observable<Book> {
+    return of(this.books.find(book => book.id == id));
   }
 }

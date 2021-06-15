@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Book} from "../../../entity/book.entity";
 import {BooksService} from "../../../service/books.service";
 import {ActivatedRoute} from "@angular/router";
+import {BookComponent} from "../../../shared/components/book/book.component";
 
 @Component({
   selector: 'app-book-details',
@@ -12,11 +13,19 @@ export class BookDetailsComponent implements OnInit {
 
   book: Book;
 
-  constructor(private bookService:BooksService, private activatedRoute:ActivatedRoute) { }
+  @ViewChild(BookComponent, {static: true})
+  bookComponent: BookComponent;
 
-  ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.book = this.bookService.getOneById(+id);
+  constructor(private bookService: BooksService, private activatedRoute: ActivatedRoute) {
   }
 
+  async ngOnInit() {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.book = await this.bookService.getOneById(+id).toPromise();
+  }
+
+
+  showMini() {
+    alert(this.bookComponent.mini ? 'il est mini':'il est pas mini');
+  }
 }
