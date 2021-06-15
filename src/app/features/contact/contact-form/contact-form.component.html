@@ -1,19 +1,16 @@
 
-<form [formGroup]="contactForm">
-  <label>
-    Email <input formControlName="email">
-  </label><br>
+<form [formGroup]="contactForm" (ngSubmit)="submit()">
+  <label class="form-label">
+    Email <input class="form-control" formControlName="email">
+  </label>
   <app-form-error [control]="contactForm.get('email')" fieldName="email"></app-form-error>
-  <br>
-  <label>
-    Subject <input formControlName="subject">
-  </label><br>
+  <label class="form-label">
+    Subject <input class="form-control" formControlName="subject">
+  </label>
   <app-form-error [control]="contactForm.get('subject')" fieldName="sujet"></app-form-error>
-  <br>
-  <label>
-    Message <textarea formControlName="message"></textarea>
-  </label><br>
+  <label class="form-label">
+    Message <textarea class="form-control" formControlName="message"></textarea>
+  </label>
   <app-form-error [control]="contactForm.get('message')" fieldName="message"></app-form-error>
-  <br>
-  <button>Envoyer</button>
+  <button class="btn btn-primary">Envoyer</button>
 </form>

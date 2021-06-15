@@ -19,4 +19,14 @@
       Contact
     </a>
   </li>
+  <li class="nav-item" *ngIf="!isConnected">
+    <a class="nav-link" routerLink="/login">
+      Login
+    </a>
+  </li>
+  <li class="nav-item" *ngIf="isConnected">
+    <a class="nav-link" (click)="logout()">
+      Logout
+    </a>
+  </li>
 </ul>

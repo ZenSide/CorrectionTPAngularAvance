@@ -1,0 +1,14 @@
+<form [formGroup]="authForm" (ngSubmit)="submit()">
+  <label class="form-label">
+    Email <input class="form-control" formControlName="email">
+  </label>
+  <app-form-error [control]="email" fieldName="email"></app-form-error>
+  <label class="form-label">
+    Mot de passe <input class="form-control" formControlName="password">
+  </label>
+  <app-form-error [control]="password" fieldName="mot de passe"></app-form-error>
+  <button class="btn btn-primary">Se connecter</button>
+  <p *ngIf="errorMessage">
+    {{errorMessage}}
+  </p>
+</form>

@@ -9,4 +9,11 @@ form {
       border: solid 2px red;
     }
   }
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  button {
+    margin: 10px 0;
+  }
 }
