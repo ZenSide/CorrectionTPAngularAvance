@@ -9,7 +9,7 @@ describe('RequestsCancelerInterceptor', () => {
       ]
   }));
 
-  it('should be created', () => {
+  xit('should be created', () => {
     const interceptor: RequestsCancelerInterceptor = TestBed.inject(RequestsCancelerInterceptor);
     expect(interceptor).toBeTruthy();
   });

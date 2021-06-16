@@ -8,6 +8,7 @@ import {Book} from "../entity/book.entity";
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { FormErrorComponent } from './components/form-error/form-error.component';
+import { CounterComponent } from './components/counter/counter.component';
 
 
 @NgModule({
@@ -17,11 +18,12 @@ import { FormErrorComponent } from './components/form-error/form-error.component
     RouterModule,
     ReactiveFormsModule
   ],
-  exports: [RouterModule, FormErrorComponent, ReactiveFormsModule, CommonModule, NgbModule, FullnamePipe, BookComponent],
+    exports: [RouterModule, FormErrorComponent, ReactiveFormsModule, CommonModule, NgbModule, FullnamePipe, BookComponent, CounterComponent],
   declarations: [
     FullnamePipe,
     BookComponent,
-    FormErrorComponent
+    FormErrorComponent,
+    CounterComponent
   ]
 })
 export class SharedModule {

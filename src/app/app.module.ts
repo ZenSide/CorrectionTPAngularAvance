@@ -14,6 +14,7 @@ import {ContactModule} from './features/contact/contact.module';
 import {LoginModule} from './features/login/login.module';
 import {AuthTokenInterceptor} from "./interceptors/auth-token.interceptor";
 import {RequestsCancelerInterceptor} from "./interceptors/requests-canceler.interceptor";
+import { CategoriesModule } from './features/categories/categories.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {RequestsCancelerInterceptor} from "./interceptors/requests-canceler.inte
     HomeModule,
     HttpClientModule,
     ContactModule,
-    LoginModule
+    LoginModule,
+    CategoriesModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true},
