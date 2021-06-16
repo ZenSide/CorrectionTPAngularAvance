@@ -15,6 +15,15 @@ import {LoginModule} from './features/login/login.module';
 import {AuthTokenInterceptor} from "./interceptors/auth-token.interceptor";
 import {RequestsCancelerInterceptor} from "./interceptors/requests-canceler.interceptor";
 import { CategoriesModule } from './features/categories/categories.module';
+import { NamesModule } from './features/names/names.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import * as fromBook from './store/book/book.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { BookEffects } from './store/book/book.effects';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -29,7 +38,19 @@ import { CategoriesModule } from './features/categories/categories.module';
     HttpClientModule,
     ContactModule,
     LoginModule,
-    CategoriesModule
+    CategoriesModule,
+    NamesModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreModule.forFeature(fromBook.bookFeatureKey, fromBook.reducer),
+    EffectsModule.forRoot(),
+    EffectsModule.forFeature([BookEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true},

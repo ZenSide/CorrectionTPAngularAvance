@@ -3,6 +3,8 @@ import {Book} from "../../../entity/book.entity";
 import {BooksService} from "../../../service/books.service";
 import {ActivatedRoute} from "@angular/router";
 import {BookComponent} from "../../../shared/components/book/book.component";
+import {Store} from "@ngrx/store";
+import {selectOneBook} from "../../../store/book/book.selectors";
 
 @Component({
   selector: 'app-book-details',
@@ -16,11 +18,17 @@ export class BookDetailsComponent implements OnInit {
   @ViewChild(BookComponent, {static: true})
   bookComponent: BookComponent;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private store:Store,private activatedRoute: ActivatedRoute) {
   }
 
   async ngOnInit() {
-    this.book = this.activatedRoute.snapshot.data['book'];
+    // on n'utilise pas le resolve pour utiliser ngrx
+    // this.book = this.activatedRoute.snapshot.data['book'];
+    const bookId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.store.select(selectOneBook,{bookId:+bookId})
+      .subscribe(book=>{
+        this.book=book;
+      });
   }
 
 

@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {BooksService} from "../../../service/books.service";
 import {Book} from "../../../entity/book.entity";
 import Swal from "sweetalert2";
+import {Store} from "@ngrx/store";
+import {addBook} from "../../../store/book/book.actions";
 
 @Component({
   selector: 'app-book-add',
@@ -24,7 +26,7 @@ export class BookAddComponent implements OnInit {
     })
   });
 
-  constructor(private bookService:BooksService) { }
+  constructor(private store:Store) { }
 
   ngOnInit(): void {
   }
@@ -32,8 +34,7 @@ export class BookAddComponent implements OnInit {
   async submit() {
     if (this.bookGroup.invalid) return;
 
-    await this.bookService.addBook(this.bookGroup.value as Book)
-      .toPromise();
+    this.store.dispatch(addBook({book:this.bookGroup.value as Book}));
     Swal.fire('Livre ajouté !');
     this.bookGroup.reset();
   }
